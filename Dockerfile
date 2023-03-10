@@ -36,13 +36,4 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get purge --auto-remove \
     && rm -rf /tmp/* /var/lib/apt/lists/*
 
-RUN mkdir -p /app
-WORKDIR /app
-
-COPY package.json ./
-RUN npm i
-
-COPY *.js ./
-COPY src/ ./src/
-
 CMD ["npm", "run", "start-three"]
