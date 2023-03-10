@@ -195,12 +195,16 @@
         // Parse the region out of the cognito Id
         const region = config.cognitoIdentityPoolId.split(":")[0];
 
-
-        // Initialize AWS and create Polly service objects
-        window.AWS.config.region = region;
+        window.AWS.config.region = 'us-west-2'; // 区域
         window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-          IdentityPoolId: config.cognitoIdentityPoolId
+          IdentityPoolId: 'us-west-2:e213e3e9-6861-49cd-b9a5-6ad742383489',
         });
+        
+        // Initialize AWS and create Polly service objects
+        // window.AWS.config.region = region;
+        // window.AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        //   IdentityPoolId: config.cognitoIdentityPoolId
+        // });
         const polly = new AWS.Polly();
         const presigner = new AWS.Polly.Presigner();
         const speechInit = HOST.aws.TextToSpeechFeature.initializeService(
